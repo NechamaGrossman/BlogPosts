@@ -1,0 +1,11 @@
+﻿<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <form method="post" action="/Admin/SubmitBlog">
+            <input type="text" class="input-lg form-control" placeholder="Title" name="Title" />
+            <textarea class="form-control" name="text" rows="20"></textarea>
+            <input type="hidden" class="input-lg form-control" value="@DateTime.Now" name="Date" />
+            <br />
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

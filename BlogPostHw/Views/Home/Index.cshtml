@@ -1,0 +1,59 @@
+﻿<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Nechama's Blog Post</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/blog-home.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Nechama's Blog post
+          <small>Read on...</small>
+        </h1>
+
+        <!-- Blog Post -->
+          @foreach (Blog b in Model)
+          { <div class="card mb-4">
+                <div class="card-body">
+                    <h1><a href="/home/Read?Id=@b.Id">@b.Title &rarr;</a></h1>
+                    <p class="card-text">@b.Text</p>
+                    <a href="/home/Read?Id=@b.Id" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+          <div class="card-footer text-muted">@b.Date
+          </div>
+        </div>
+          }
+          </div>
+        </div>
+ <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+<!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

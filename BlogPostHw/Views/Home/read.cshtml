@@ -1,0 +1,94 @@
+﻿@model BlogAndName
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Nechama's Blogs!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Title -->
+                <h1 class="mt-4">@Model.blog.Title</h1>
+
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p>@Model.blog.Date</p>
+
+                <!-- Post Content -->
+                <p class="lead">@Model.blog.Text</p>
+
+                <!-- Comments Form -->
+                <div class="card my-4">
+                    <h5 class="card-header">Leave a Comment:</h5>
+                    <div class="card-body">
+                        <form method="post" action="/Home/AddComment">
+                            @if (Model.Name == null)
+                            {
+                                <input placeholder="Name" name="Name" />
+                            }
+                            else
+                            {
+                                <input placeholder="Name" name="Name" value="@Model.Name"/>
+                            }
+                            <div class="form-group">
+                                <textarea name="Text" class="form-control" rows="3"></textarea>
+                            </div>
+                            <input type="hidden" name="Date" value="@DateTime.Now" />
+                            <input type="hidden" name="BlogId" value="@Model.blog.Id" />
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Single Comment -->
+                @foreach (Comment c in Model.blog.Comments)
+                {
+                    <div class="media mb-4">
+                        <div class="media-body">
+                            <h5 class="mt-0">@c.Name</h5>
+                            @c.Text
+                        </div>
+                        <p>Date: @Model.blog.Date</p>
+                    </div>
+                }
+            </div>
+            <!-- /.container -->
+            <!-- Footer -->
+            <footer class="py-5 bg-dark">
+                <div class="container">
+                    <p class="m-0 text-center text-white">Copyright &copy; Nechama Grossman 2020</p>
+                </div>
+                <!-- /.container -->
+            </footer>
+
+            <!-- Bootstrap core JavaScript -->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>
